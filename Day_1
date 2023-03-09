@@ -1,0 +1,93 @@
+powershell.exe is  a wrapper for System.Management.Automation.dll
+Powershell cmdlets are divided into "Noun" - "Verb"
+  Verbs are case INSENSITIVE
+    ex. get-command
+        get-process
+        get-verb
+Commands
+  Cmdlets
+  Functions
+  Workflows
+  Exterior Commands
+  
+  Aliases
+  Functions
+  Cmdlets
+  path variable
+  
+  get-childitem -path c:\windows -filter *.exe -recurse
+  
+PSOBject
+  Members
+    Properties
+    Methods
+    
+    Get-Process | get-member -MemberType Method
+    
+format-table
+format-list
+format-custom
+format-wide
+
+
+
+write-host=Outputs to terminal without adding data to the pipeline
+wrtie-output= outputs data to pipeline
+
+
+=======================================================================
+To call on variables in PS you must have dollar sign "$var"
+
+        PS C:\Users\student> $x=20
+
+        PS C:\Users\student> $x
+        20
+
+        PS C:\Users\student> Get-Variable x
+
+        Name                           Value                                                                                                                                                 
+        ----                           -----                                                                                                                                                 
+        x                              20                        
+=========================================================================
+
+MULTIPLE VARIABLES CAN BE ASSIGNED AT ONCE BY USING COMMAS
+    PS C:\Users\student> $a, $b, $c = "This", "That", "The other"
+
+    PS C:\Users\student> $c
+    The other
+
+USE TEST-PATH TO VERIFY IF OBJECTS EXIST
+
+    PS C:\Users\student> test-path variable:c
+    True
+
+
+
+-----------------------------------------------------------------------
+Variable Expansion
+    
+    
+    $var1 = "Test"
+    Write-Host "Hello $var1"
+    write-host 'Hello $var1'
+
+OUTPUT
+
+    PS C:\Users\student> 
+    $var1 = "Test"
+    Write-Host "Hello $var1"
+    write-host 'Hello $var1'
+    Hello Test
+    Hello $var1
+
+
+-------------------------------------------------------
+$true -and $false
+$null=Empty value. Can be used like /dev/null
+$_ or $PSItem = Item currently in the pipeline
+$args = variable amount of arguments. is an array
+$input=Input to a function
+$matches= Hash table of regex matches
+$profile
+
+
