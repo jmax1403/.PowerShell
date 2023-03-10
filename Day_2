@@ -1,0 +1,85 @@
+"the pipeline" is the output of the previous command being used as input for the next command
+
+Sorting and grouping output
+    get-ChildItem(gci) aka ls
+    Sort command
+        sort-object = sort command
+            -property _____ = specifies the property you are sorting by
+            -descending = lists the output in descending order
+    Group-object
+        groups the objects and gets a count
+    select-Object
+        gets only certain objects from the output
+            can get first x amount using "-first x"
+       EXAMPLES
+       
+       PS C:\Users\student\Desktop> get-service | group-Object status
+
+        Count Name                      Group                                                                                                           
+        ----- ----                      -----                                                                                                           
+          179 Stopped                   {AarSvc_29a8357, AJRouter, ALG, AppIDSvc...}                                                                    
+           84 Running                   {Appinfo, AudioEndpointBuilder, Audiosrv, BFE...}  
+           
+           --------------------------------------------------------------------------------------------------
+       PS C:\Users\student\Desktop> get-process | sort -property id |Select-Object -first 10
+
+        Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName                                                                           
+        -------  ------    -----      -----     ------     --  -- -----------                                                                           
+              0       0       56          8                 0   0 Idle                                                                                  
+           2525       0      192         36     519.13      4   0 System                                                                                
+              0       8     2916      25532      13.69    108   0 Registry                                                                              
+             56       3     1060        484       0.20    360   0 smss                                                                                  
+            584      32    14428      18004       4.56    416   1 LogonUI                                                                               
+            704      24    18420      19000       0.92    424   1 dwm                                                                                   
+            515      19     1804       2416       8.31    464   0 csrss                                                                                 
+            165      11     1408       1856       0.11    556   0 wininit                                                                               
+            172      10     1712       1584       0.16    564   1 csrss                                                                                 
+           2113      82    41212      71400      41.11    584   2 explorer  
+           
+           
+           
+           
+           
+         
+           
+           
+    =-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=          
+    get-unique
+    measure-object
+    compare-object
+           
+          
+IF ELSEIF ELSE
+    if (condition) {
+        outupt
+    }
+    elseif (condition) {
+        output
+    }
+    else{
+        output
+    }
+    
+    
+    
+SWITCHES
+        $time = 12
+        Switch($time) {
+          6 {"Morning"; break}
+          12 {"Noon"; break}
+          18 {"Evening"; break}
+          22 {"Night"; break}
+      output would be noon
+  
+  
+LOOPS
+        $nums = 1,2,3,4,5
+        $nums | ForEach{$_ * 2}
+        
+reading and writing from files
+    Set-Content -path .\example.txt -value "A string"
+    Get-Content .\example.txt
+    add-content -path .\example.txt -value "another string"
+
+    "a thrid string" > .\example.txt
+    "a thrid string" >> .\example.txt
