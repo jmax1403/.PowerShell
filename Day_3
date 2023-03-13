@@ -160,5 +160,89 @@ make-switchparam -DoSwitch
 
 
 
+
+
+------------------------------------------------------------------------------------------
+
+function check-user {
+    [CmdletBinding(DefaultPArameterSetname='A',Mandatory=$true)]
+    param (
+        [Parameter(ParameterSetName='A',Mandatory=$true)]
+        $name,
+
+        [Parameter(ParameterSetName='B',Mandatory=$true)]
+        $id,
+
+        [Parameter(ParameterSetName='C',Mandatory=$true)]
+        $username
+    )
+    $var = $PSCmdlet.parameterSetName
+    "The $var parameter set was chosen"
+}
+
+
+
+
+function add-marine {
+    [CmdletBinding()]
+    param (
+    [Parameter(Mandatory=$true)][string]$firstname
+    [Parameter(Mandatory=$true)][string]$lastname
+    [Parameter(Mandatory=$true)][string]$MOS
+    [Parameter(Mandatory=$true)][string]$RANK
+    [Parameter(Mandatory=$true)][string]$Position
+    )
+        
+        $marine = [PSCustomObject]@{ #creates hashtable object populated with values from parameters
+            "first name" = $firstname
+            "Last name" = $lastname
+            "MOS" = $MOS
+            "Rank" = $rank
+            "Position" = $position
+        }
+}
+
+
+
+
+
+function test-user {
+    [CmdletBinding(DefaultParameterSetName='name')]
+    param(
+        [parameter(paramtersetname='name', Position=0, Mandatory=$true)]
+        [String]
+        $name,
+        
+        [parameter(parametersetname='ID', Position=0, Mandatory=$true)]
+        [int]
+        $id
+    )
+    $set = PSCmdlet.parametersetname
+    "The $set parameter set was selected"
+    if($set -eq "ID") {
+        "$ID"
+    else {
+        "Their name is $name"
+
+        }
+    }
+}
+
+
+function bare-bones {
+    Begin {
+        <code>
+    }
+    Process {
+        <code>
+    }
+    End{
+        <code>
+    }
+}
+
+
+
+
     
     
