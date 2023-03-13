@@ -77,6 +77,10 @@ Escape characters and String manipulation
         
     (netstat) ^(?:[0-9]{1-3}\.)[3][0-9]{1,3]$
     
+    
+    [ipaddress] can be used as an IP
+    
+    
     regex for ip addr
     
     
