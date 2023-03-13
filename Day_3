@@ -1,0 +1,164 @@
+Arrays
+    Array is a list of items
+    
+    $x = gps     
+    $x.GetType
+    $x -is [array]
+    $d -is [array]
+    $x[0].GetType()
+    $array =1..15
+    $array2 = "Hello", "World", 1, 2, (get-date)
+        Cmdlets in an array must be in () to execute 
+        Polymorphic arrays are arrays with multiple value types
+    $r = @[]
+        "@[]" designates the variable as an empty array that can have items added to it
+    
+    
+    Jagged/Nested Arrays are arrays inside of another array
+        $jagged = "Jim","Joe","Jan",(1,("Apple", "Pear"), 3)
+        $jagged[3][1][1]
+            returns Pear
+        $boom = @("boom") * 20
+
+
+
+HASH TABLES
+    Hash tables work very similarly to Dictionaries
+ 
+     $myhash = @{First = 'John'; Second = 'Josh'; Third = '49'}
+    $myhash["Second"]
+        Josh
+     $myhash.First
+        John
+     $myhash.values
+        returns every value in the hash  table
+    $myhash.remove(key)
+        deletes key and value from the hash table
+    
+    
+    Arrays can also be stored in hash tabels
+        $list = @{el1 = 5; ar1 = 1..7; ar2 = 6,7,8}
+        $list["ar1"]
+        1
+        2
+        3
+        4
+        5
+        6
+        7
+        
+        
+        
+Escape characters and String manipulation
+    Escape character in PS is `
+    
+    Make a multi line string using @" and "@
+    
+        $text = @"
+        One `"Terabyte`" is $(1TB / 1GB) Gigabytes
+        Variables are resolved 
+        "PWD" is ur current path
+        "@
+        $text
+
+        output 
+            One "Terabyte" is 1024 Gigabytes
+            Variables are resolved 
+            "PWD" is ur current path
+   
+   Replace strings
+   "Hello Wojd" -replace "wojd","world"
+   
+   'Server1,server2,server3' replace ',', ';'
+   
+   qprocess -replace \s,{.} 
+        
+        
+        
+    (netstat) ^(?:[0-9]{1-3}\.)[3][0-9]{1,3]$
+    
+    regex for ip addr
+    
+    
+    
+Functions
+    functions are callable code blocks
+    
+    function <name> {
+        <code>
+    }
+    
+    function test-me {
+        write-host "Hello World"
+    }
+
+    test-me
+    
+    
+    
+    --------------------------------------------------------------------
+    FUNCTIONS CAN ALSO HAVE PARAMETERS
+    
+
+    function make-switchparam{
+    param(
+        [switch]
+        $DoSwitch
+    )
+
+   
+function doubletest-me($value) {
+    if($value){
+        write-host -ForegroundColor Green "True"
+        }
+    else{
+        Write-Host -ForegroundColor Red "False"
+        }
+    }
+
+
+
+function make-switchparam{
+    param(
+        [switch]
+        $DoSwitch
+    )
+
+    if($DoSwitch) {
+    "I have been swotched"
+      }
+      else { 
+        "No switching has been done"
+    }
+}
+
+make-switchparam
+make-switchparam -DoSwitch
+
+
+
+
+
+
+While Mandatory =$true means that a response is mandatory
+
+VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+function test-permparam {
+    param(
+        [Parameter(Mandatory=$true, helpmessage = "message")]
+        $permparam
+    )
+    "Your name is $permparam"
+}
+
+test-permparam
+test-permparam namely
+
+make-switchparam
+make-switchparam -DoSwitch
+
+
+
+
+    
+    
